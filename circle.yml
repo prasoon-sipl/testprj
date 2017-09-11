@@ -6,5 +6,8 @@ deployment:
     branch: /.*?/
     
     commands:
-      - git branch | grep "[^* ]+" -Eo
+      - for branch in $(git for-each-ref --format='%(refname)' refs/heads/); 
+        do
+         echo "$branch"
+        done
       - aws s3 sync /home/ubuntu/testprj s3://demoprj --delete
