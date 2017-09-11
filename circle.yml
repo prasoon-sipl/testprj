@@ -3,7 +3,7 @@ dependencies:
         - sudo pip install awscli
 deployment:
   prod:
-    branch: *
+    branch: 
     commands:
       - git branch | grep "[^* ]+" -Eo
       - aws s3 sync /home/ubuntu/testprj s3://demoprj --delete
