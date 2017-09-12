@@ -1,6 +1,6 @@
 #!/bin/bash
-
-for i in $(git branch -r)
-do
- echo $i
+branches=()
+eval "$(git for-each-ref --shell --format='branches+=(%(refname))' refs/heads/)"
+for branch in "${branches[@]}"; do
+    echo "$branch"
 done
