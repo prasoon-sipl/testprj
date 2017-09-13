@@ -3,8 +3,6 @@
 #    - curl -s https://raw.githubusercontent.com/Shopify/themekit/master/scripts/install | sudo python
 dependencies:
   override:
-    - bundle install
-    - bundle update
     - sudo pip install awscli
 
 test:
@@ -14,7 +12,6 @@ deployment:
   staging:
     branch: /.*?/
     commands:
-      - bundle exec jekyll build JEKYLL_ENV=production
       - ./deploy.sh
 notify:
   webhooks:
