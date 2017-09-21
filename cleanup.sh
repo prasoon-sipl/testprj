@@ -12,7 +12,7 @@ do
 done
 #=====================================================
 
-eval "$(git for-each-ref --shell --format='branches+=(%(refname))' refs/heads/)"
+eval "$(git for-each-ref --shell --format='branches+=(%(refname))')"
 for branch in "${branches[@]}"; 
 do
     branch_list+=("$branch")
