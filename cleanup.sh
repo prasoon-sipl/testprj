@@ -11,10 +11,12 @@ do
   
 done
 #=====================================================
-git for-each-ref --shell \
-  branch_list+=('%(refname)')
-  refs/heads/
 
+eval "$(git for-each-ref --shell --format='branches+=(%(refname))' refs/heads/)"
+for branch in "${branches[@]}"; 
+do
+    branch_list+=("$branch")
+done
 
 		# branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
