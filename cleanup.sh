@@ -12,19 +12,13 @@ do
 done
 #=====================================================
 
-eval "$(git for-each-ref --shell --format='branches+=(%(refname))')"
-for branch in "${branches[@]}"; 
-do
-    branch_list+=("$branch")
-done
+		branchs=$(git branch -r | sed -n -e 's/^\* \(.*\)/\1/p')
 
-		# branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-
-		# for branch_name in $(echo "$branchs") 
-		# do 
-		# 	branch_list+=("$branch_name")
-		# 	#echo $branch; 
-		# done
+		for branch_name in $(echo "$branchs") 
+		do 
+			branch_list+=("$branch_name")
+			#echo $branch; 
+		done
 #========================================================
 
 #echo ${bucket_list[@]} 
