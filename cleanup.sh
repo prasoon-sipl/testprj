@@ -13,14 +13,19 @@ done
 #=====================================================
 
 
-#branchs=$(git branch | sed -ne 's/^\* \(.*\/\1/p')
-branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-
-for branch_name in $(echo "$branchs") 
-do 
-	branch_list+=("$branch_name")
-	#echo $branch; 
+#branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+for repo in */.git; 
+do branch=$(cat $repo/HEAD); 
+	#echo ${repo%/.git} :  ${branch##*/}; 
+	branch_list+=("$branch")
 done
+
+
+# for branch_name in $(echo "$branchs") 
+# do 
+# 	branch_list+=("$branch_name")
+	
+# done
 #========================================================
 
 #echo ${bucket_list[@]} 
