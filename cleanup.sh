@@ -4,7 +4,7 @@ s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[]
 bucket_list=()
 for bucket in $(echo "$s3_bucket_list")
 do
-   bucket_list +=("$bucket")
+   bucket_list +=$(echo "$bucket")
 done
 
 echo "${bucket_list[*]}"
