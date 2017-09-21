@@ -11,16 +11,18 @@ do
   
 done
 #=====================================================
+git for-each-ref --shell \
+  branch_list+=('%(refname)')
+  refs/heads/
 
 
+		# branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
-branchs=$(git branch -r | sed -n -e 's/^\* \(.*\)/\1/p')
-
-for branch_name in $(echo "$branchs") 
-do 
-	branch_list+=("$branch_name")
-	#echo $branch; 
-done
+		# for branch_name in $(echo "$branchs") 
+		# do 
+		# 	branch_list+=("$branch_name")
+		# 	#echo $branch; 
+		# done
 #========================================================
 
 #echo ${bucket_list[@]} 
@@ -28,5 +30,5 @@ done
 #echo ${branch_list[@]} 
 
 different_bucket_name=(`echo ${bucket_list[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
-echo ${branch_list[@]}
+echo ${different_bucket_name[@]} 
 exit
