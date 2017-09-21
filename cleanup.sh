@@ -9,4 +9,14 @@ do
 done
 
 echo ${bucket_list[@]}   
+
+
+branch_list=()
+git branch | grep ^feature/ | while read branch; 
+do 
+	branch_list+=("$branch")
+	#echo $branch; 
+done
+
+echo ${branch_list[@]} 
 exit
