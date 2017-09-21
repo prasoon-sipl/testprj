@@ -3,7 +3,7 @@ bucket_list=()
 branch_list=()
 different_bucket_name=()
 
-s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[][]//g' -e 's/"//g' -e 's/,//g' -e 's/.systematixinfotech.com//g' -e '/^$/d' -e 's/^[ \t]*//;s/[ \t]*$//')
+s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[][]//g' -e 's/"//g' -e 's/,//g' -n '/.systematixinfotech.com/p' -e 's/.systematixinfotech.com//g' -e '/^$/d' -e 's/^[ \t]*//;s/[ \t]*$//')
 
 for bucket in $(echo "$s3_bucket_list")
 do
@@ -24,8 +24,8 @@ for branch_name in `git branch --list|sed 's/\*//g'`;
    branch_list+=("$branch_name")
  done
 #========================================================
-
-#echo ${bucket_list[@]} 
+echo ${bucket_list[@]} 
+exit
 #echo ${branch_list[@]} 
 
 different_bucket_name=(`echo ${bucket_list[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
