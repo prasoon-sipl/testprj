@@ -21,16 +21,13 @@ done
 		# done
 for branch_name in `git branch --list|sed 's/\*//g'`;
  do 
-   
-    branch_list+=("$branch_name")
-		
+   branch_list+=("$branch_name")
  done
 #========================================================
 
 #echo ${bucket_list[@]} 
+#echo ${branch_list[@]} 
 
-echo ${branch_list[@]} 
-exit
 different_bucket_name=(`echo ${bucket_list[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 echo ${different_bucket_name[@]} 
 exit
