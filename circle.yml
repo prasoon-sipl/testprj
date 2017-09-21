@@ -1,9 +1,19 @@
+#dependencies:
+#  pre:
+#    - curl -s https://raw.githubusercontent.com/Shopify/themekit/master/scripts/install | sudo python
 dependencies:
-    override:
-        - sudo pip install awscli
+  override:
+    - sudo pip install awscli
+
+test:
+  override:
+    - echo "no tests being run!"
 deployment:
-  prod:
-    branch: master
+  staging:
+    branch: /.*/
     commands:
-      - git branch | grep "[^* ]+" -Eo
-      - aws s3 sync /home/ubuntu/testprj s3://demoprj --delete
+      - ./deploy.sh
+      - ./cleanup.sh
+notify:
+  webhooks:
+  #  - url: https://api.ghostinspector.com/v1/suites/58da99c5f32adc6f11f92a8d/execute/?apiKey=64d53c8942699775b99dbc4676c5f78b2af46f98
