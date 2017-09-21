@@ -12,7 +12,7 @@ do
 done
 #=====================================================
 
-		branchs=$(git branch -r | sed -n -e 's/^\* \(.*\)/\1/p')
+		branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
 		for branch_name in $(echo "$branchs") 
 		do 
