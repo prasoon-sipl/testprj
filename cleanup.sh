@@ -1,6 +1,7 @@
 #!/bin/bash
 bucket_list=()
 branch_list=()
+different_bucket_name=()
 
 s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[][]//g' -e 's/"//g' -e 's/,//g' -e 's/.systematixinfotech.com//g' -e '/^$/d' -e 's/^[ \t]*//;s/[ \t]*$//')
 
@@ -22,8 +23,10 @@ do
 done
 #========================================================
 
-echo ${bucket_list[@]} 
+#echo ${bucket_list[@]} 
 
-echo ${branch_list[@]} 
+#echo ${branch_list[@]} 
 
+different_bucket_name=(`echo ${bucket_list[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
+echo ${different_bucket_name[@]}
 exit
