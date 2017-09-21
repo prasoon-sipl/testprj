@@ -1,0 +1,9 @@
+dependencies:
+    override:
+        - sudo pip install awscli
+deployment:
+  prod:
+    branch: master
+    commands:
+      - git branch | grep "[^* ]+" -Eo
+      - aws s3 sync /home/ubuntu/testprj s3://demoprj --delete
