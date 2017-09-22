@@ -23,7 +23,7 @@ done
 #  do 
 #    branch_list+=("$branch_name")
 #  done
-for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
+for remote in `git branch --list |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
 do 
     branch_list+=("$remote") 
 done
@@ -35,7 +35,7 @@ echo ${branch_list[@]}
 
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 
-echo ${different_bucket_name[@]} 
+#echo ${different_bucket_name[@]} 
 
 
 
