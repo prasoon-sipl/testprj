@@ -21,7 +21,7 @@ done
 #kd;lkfdl;kdlkf
 #============================================
 
-for remote in `git branch -r | grep -v /HEAD | grep -v origin/`; 
+for remote in `git branch -r | grep -v /HEAD sed -e 's/origin///g'`; 
 do 
     #echo $remote ;
     branch_list+=("$remote") 
