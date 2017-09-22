@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for BRANCH in `git branch --list|sed 's/\*//g'`;
+for BRANCH in `git branch --list`;
   do 
     echo "$BRANCH"
     echo $CIRCLE_BRANCH
