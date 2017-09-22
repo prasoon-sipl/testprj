@@ -39,12 +39,12 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # ===Delete unmatched bucket by name ==========================
 for j in "${different_bucket_name[@]}"
 do
-    echo "$j" 
-  a="$j"
-  b=".systematixinfotech.com"
-  c="$a $b"
+    #echo "$j" 
+  bucket1="$j"
+  bucket2=".systematixinfotech.com"
+  bucket3="$bucket1$bucket2"
 
-  echo "$c"
+  echo "$bucket3"
     #aws s3api delete-bucket --bucket my-bucket
 done
 
