@@ -18,20 +18,14 @@ do
    b=${i//.systematixinfotech.com/}
    bucket_list1+=("$b")
 done
-#kd;lkfdl;kdlkf
 #============================================
 
 for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
-                                           
 do 
-    
     branch_list+=("$remote") 
 done
 
-# for branch_name in `git branch -r|sed 's/\*//g'`;
-#  do 
-#    branch_list+=("$branch_name")
-#  done
+
 #========================================================
 #echo ${bucket_list1[@]} 
 echo ${branch_list[@]} 
@@ -39,3 +33,9 @@ exit
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 echo ${different_bucket_name[@]} 
 exit
+
+
+# for branch_name in `git branch -r|sed 's/\*//g'`;
+#  do 
+#    branch_list+=("$branch_name")
+#  done
