@@ -18,6 +18,7 @@ do
    b=${i//.systematixinfotech.com/}
    bucket_list1+=("$b")
 done
+<<<<<<< HEAD
 #============================================
 # for branch_name in `git branch -r|sed 's/\*//g'`;
 #  do 
@@ -37,9 +38,26 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 
 #echo ${different_bucket_name[@]} 
 
+#git remote prune
 #git fetch --prune --all
 #git fetch -p
 #git branch –D branch-name (delete from local)
 #git push origin :branch-name (delete from remote)
 
 
+=======
+#kd;lkfdl;kdlkf
+#============================================
+
+for branch_name in `git branch --list|sed 's/\*//g'`;
+ do 
+   branch_list+=("$branch_name")
+ done
+#========================================================
+#echo ${bucket_list1[@]} 
+echo ${branch_list[@]} 
+exit
+different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
+echo ${different_bucket_name[@]} 
+exit
+>>>>>>> 7b076643c45efc3977d4050fe1fd96058a5bbda6
