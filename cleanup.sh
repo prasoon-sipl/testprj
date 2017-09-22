@@ -37,5 +37,6 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 
 #echo ${different_bucket_name[@]} 
 #git fetch --prune --all
+#git fetch -p
 
 
