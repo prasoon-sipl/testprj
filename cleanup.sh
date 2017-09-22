@@ -21,7 +21,7 @@ done
 #kd;lkfdl;kdlkf
 #============================================
 
-for branch_name in `git branch --list|sed 's/\*//g'`;
+for branch_name in `git branch -r|sed 's/\*//g'`;
  do 
    branch_list+=("$branch_name")
  done
