@@ -21,7 +21,7 @@ do
    #b =$("$i" | sed -r 's/[.systematixinfotech.com]+//g')
    #b=echo "$i" | tr '[.systematixinfotech.com]' ''
    #${i//[.systematixinfotech.com]/}
-   b=${i//.systematixinfotech.com/.}
+   b=${i//.systematixinfotech.com/}
    bucket_list1+=("$b")
 done
 
