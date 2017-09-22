@@ -36,6 +36,6 @@ echo ${branch_list[@]}
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 
 #echo ${different_bucket_name[@]} 
-#git remote update origin --prune
+
 
 
