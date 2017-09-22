@@ -18,7 +18,7 @@ do
    b=${i//.systematixinfotech.com/}
    bucket_list1+=("$b")
 done
-
+#kd;lkfdl;kdlkf
 #============================================
 
 for branch_name in `git branch --list|sed 's/\*//g'`;
