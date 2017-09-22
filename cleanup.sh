@@ -8,13 +8,15 @@ s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[]
 #-e 's/.systematixinfotech.com//g'
 for bucket in $(echo "$s3_bucket_list")
 do
-   bucket_list+=("$bucket")
-  
+   #bucket_list+=("$bucket")
+  search_string=".systematixinfotech.com"  
+  match=$(echo "$bucket" | grep -o $search_string)  
+  [[ ! -z $match ]] && bucket_list+=("$bucket")
 done
 #==========================
-search_string=".systematixinfotech.com"  
-match=$(echo "${bucket_list[@]:0}" | grep -o $search_string)  
-[[ ! -z $match ]] && bucket_list1+=("$bucket")
+# search_string=".systematixinfotech.com"  
+# match=$(echo "${bucket_list[@]:0}" | grep -o $search_string)  
+# [[ ! -z $match ]] && bucket_list1+=("$bucket")
 #=====================================================
 
 		# branchs=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
@@ -29,7 +31,7 @@ for branch_name in `git branch --list|sed 's/\*//g'`;
    branch_list+=("$branch_name")
  done
 #========================================================
-echo ${bucket_list1[@]} 
+echo ${bucket_list[@]} 
 exit
 #echo ${branch_list[@]} 
 
