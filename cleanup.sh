@@ -30,8 +30,8 @@ done
 
 
 #========================================================
-#echo ${bucket_list1[@]} 
-#echo ${branch_list[@]} 
+echo ${bucket_list1[@]} 
+echo ${branch_list[@]} 
 exit
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 echo ${different_bucket_name[@]} 
