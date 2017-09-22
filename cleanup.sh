@@ -18,9 +18,9 @@ done
 for i in "${bucket_list[@]}"
 do
    #b =$(sed -e 's/.systematixinfotech.com//g' "$i")
-   #b ="$i" | sed -r 's/[.systematixinfotech.com]+//g'
+   b =$("$i" | sed -r 's/[.systematixinfotech.com]+//g')
    #b=echo "$i" | tr '[.systematixinfotech.com]' ''
-   ${i//[.systematixinfotech.com]/}
+   #${i//[.systematixinfotech.com]/}
    bucket_list1+=("$i")
 done
 
