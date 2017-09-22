@@ -22,7 +22,7 @@ do
    #b=echo "$i" | tr '[.systematixinfotech.com]' ''
    #${i//[.systematixinfotech.com]/}
    b=${i//.systematixinfotech.com/.}
-   bucket_list1+=("$i")
+   bucket_list1+=("$b")
 done
 
 #============================================
