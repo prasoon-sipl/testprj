@@ -23,7 +23,7 @@ done
 #  do 
 #    branch_list+=("$branch_name")
 #  done
-for remote in `git branch --list |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
+for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
 do 
     branch_list+=("$remote") 
 done
