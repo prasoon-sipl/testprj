@@ -18,7 +18,7 @@ done
 for i in "${bucket_list[@]}"
 do
    b = sed -e 's/.systematixinfotech.com//g' "$i"
-   bucket_list1+=("b")
+   bucket_list1+=("$b")
 done
 
 #============================================
