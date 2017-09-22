@@ -21,10 +21,16 @@ done
 #kd;lkfdl;kdlkf
 #============================================
 
-for branch_name in `git branch -r|sed 's/\*//g'`;
- do 
-   branch_list+=("$branch_name")
- done
+for remote in `git branch -r | grep -v /HEAD`; 
+do 
+    #echo $remote ;
+    branch_list+=("$remote") 
+done
+
+# for branch_name in `git branch -r|sed 's/\*//g'`;
+#  do 
+#    branch_list+=("$branch_name")
+#  done
 #========================================================
 #echo ${bucket_list1[@]} 
 echo ${branch_list[@]} 
