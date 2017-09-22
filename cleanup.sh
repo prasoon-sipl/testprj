@@ -20,8 +20,8 @@ do
 done
 
 #============================================
-#|sed 's/\*//g'
-for branch_name in `git branch --list`;
+
+for branch_name in `git branch |sed 's/\*//g'`;
  do 
    branch_list+=("$branch_name")
  done
