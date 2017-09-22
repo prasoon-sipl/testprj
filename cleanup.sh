@@ -23,9 +23,9 @@ done
 #  do 
 #    branch_list+=("$branch_name")
 #  done
-for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
+for branch_name in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
 do 
-    branch_list+=("$remote") 
+    branch_list+=("$branch_name") 
 done
 
 
@@ -36,7 +36,10 @@ echo ${branch_list[@]}
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 
 #echo ${different_bucket_name[@]} 
+
 #git fetch --prune --all
 #git fetch -p
+#git branch –D branch-name (delete from local)
+#git push origin :branch-name (delete from remote)
 
 
