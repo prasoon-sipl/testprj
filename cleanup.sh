@@ -19,10 +19,6 @@ do
    bucket_list1+=("$b")
 done
 #============================================
-	# for branch_name in `git branch -r|sed 's/\*//g'`;
-	#  do 
-	#    branch_list+=("$branch_name")
-	#  done
 
 for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
 do 
@@ -30,13 +26,25 @@ do
 done
 
 
-#lists========================================================
-echo ${bucket_list1[@]} 
-echo ${branch_list[@]} 
+#========================================================
+#echo ${bucket_list1[@]} 
+#echo ${branch_list[@]} 
 
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 
 #echo ${different_bucket_name[@]} 
 
+#echo ${different_bucket_name[@]} 
 
+# ===Delete unmatched bucket by name ==========================
+for j in "${different_bucket_name[@]}"
+do
+    echo "$j" 
+  a="$j"
+  b=".systematixinfotech.com"
+  c="$a $b"
+
+  echo "$c"
+    #aws s3api delete-bucket --bucket my-bucket
+done
 
