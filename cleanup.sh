@@ -21,7 +21,7 @@ done
 
 #============================================
 
-for branch_name in `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'`;
+for branch_name in `git branch --list|sed 's/\*//g'`;
  do 
    branch_list+=("$branch_name")
  done
