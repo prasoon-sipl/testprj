@@ -21,7 +21,7 @@ done
 #kd;lkfdl;kdlkf
 #============================================
 
-for remote in `git branch -r | sed -e 's/origin///g'`; 
+for remote in `git branch -r |sed 's/\*//g' 's/origin///g' `; 
 do 
     #echo $remote ;
     branch_list+=("$remote") 
