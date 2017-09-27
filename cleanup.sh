@@ -4,7 +4,7 @@ branch_list=()
 branch_list1=()
 different_bucket_name=()
 
-#git remote prune origin
+git remote prune origin
 
 #==============================
 #  Fetch bucket list from S3  #
