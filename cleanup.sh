@@ -46,7 +46,7 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 
 #=====================================
 # Delete unmatched bucket by name    #
-# if bucket list is not empty        # 
+# if bucket list is not empty .       # 
 #=====================================
 
 if [ ${#bucket_list1[@]} -eq 0 ]; then
