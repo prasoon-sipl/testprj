@@ -49,7 +49,8 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # Delete unmatched bucket by name    #
 # if bucket list is not empty .       # 
 #=====================================
-echo ${bucket_list1[@]}
+#echo ${bucket_list1[@]}
+
 if [ ${#bucket_list1[@]} -eq 0 ]; then
     echo "No buckets for deletion."
 else
@@ -59,9 +60,9 @@ else
       bucket1="$j"
       bucket2=".systematixinfotech.com"
       bucket3="$bucket1$bucket2"
-      echo $bucket3
+      #echo $bucket3
       #==delete bucket=====================
-      #aws s3api delete-bucket --bucket $bucket3
+      aws s3api delete-bucket --bucket $bucket3 --force
     done
 fi
 
