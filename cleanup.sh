@@ -62,7 +62,8 @@ else
       bucket3="$bucket1$bucket2"
       #echo $bucket3
       #==delete bucket=====================
-      aws s3api delete-bucket --bucket $bucket3 --force
+      #aws s3api delete-bucket --bucket $bucket3 --force
+      aws s3 rb s3://$bucket3 --force
     done
 fi
 
