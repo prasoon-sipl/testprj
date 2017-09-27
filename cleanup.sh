@@ -4,7 +4,7 @@ branch_list=()
 branch_list1=()
 different_bucket_name=()
 
-`git remote prune origin`
+#git remote prune origin
 
 #==============================
 #  Fetch bucket list from S3  #
@@ -49,7 +49,7 @@ do
   bucket1="$j"
   bucket2=".systematixinfotech.com"
   bucket3="$bucket1$bucket2"
-
-  aws s3api delete-bucket --bucket $bucket3
+  echo $bucket3
+  #aws s3api delete-bucket --bucket $bucket3
 done
 
