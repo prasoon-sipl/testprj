@@ -71,7 +71,7 @@ else
         aws s3 rb s3://$bucket3 --force
       #else
         #echo "not found"
-      #fi
+      fi
 
     done
 fi
