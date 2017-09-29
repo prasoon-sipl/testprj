@@ -62,7 +62,13 @@ else
       bucket1="$j"
       bucket2="-stagingdev.gardenuity.com"
       bucket3="$bucket1$bucket2"
-      echo $bucket3
+      
+
+      if aws s3api head-bucket --bucket "$S3_BUCKET" 2>/dev/null; then
+        echo $bucket3
+        echo "found"
+      else
+        echo "not found"
       #==delete bucket=====================
       #aws s3 rb s3://$bucket3 --force
     done
