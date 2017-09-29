@@ -18,14 +18,14 @@ s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[]
 for bucket in $(echo "$s3_bucket_list")
 do
   #search_string='-staging.gardenuity.com'
- search_string='staging.gardenuity.com'   
+ search_string='/\-stagingdev.gardenuity.com'   
  match=$(echo "$bucket" | grep -o $search_string)
   [[ ! -z $match ]] && bucket_list+=("$bucket")
 done
 
 for i in "${bucket_list[@]}"
 do
-   b=${i//-staging.gardenuity.com/}
+   b=${i//-stagingdev.gardenuity.com/}
    bucket_list1+=("$b")
 done
 
@@ -60,7 +60,7 @@ echo ${different_bucket_name[@]}
 #     do
       
 #       bucket1="$j"
-#       bucket2="-staging.gardenuity.com"
+#       bucket2="-stagingdev.gardenuity.com"
 #       bucket3="$bucket1$bucket2"
 #       echo $bucket3
 #       #==delete bucket=====================
