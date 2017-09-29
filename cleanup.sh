@@ -18,7 +18,7 @@ s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[]
 for bucket in $(echo "$s3_bucket_list")
 do
   search_string=".systematixinfotech.com"  
-  match=$(echo "$bucket" | grep -o '$search_string')  #-o
+  match=$(echo "$bucket" | grep -o $search_string)  #-o
   [[ ! -z $match ]] && bucket_list+=("$bucket")
 done
 
