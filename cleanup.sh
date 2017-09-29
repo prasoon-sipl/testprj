@@ -48,21 +48,22 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # Delete unmatched bucket by name    #
 # if bucket list is not empty .       # 
 #=====================================
-echo ${branch_list[@]}
-echo ${bucket_list1[@]}
-echo ${different_bucket_name[@]}
 
-# if [ ${#bucket_list1[@]} -eq 0 ]; then
-#     echo "No buckets for deletion."
-# else
-#     for j in "${different_bucket_name[@]}"
-#     do
+#echo ${branch_list[@]}
+#echo ${bucket_list1[@]}
+#echo ${different_bucket_name[@]}
+
+if [ ${#bucket_list1[@]} -eq 0 ]; then
+    echo "No buckets for deletion."
+else
+    for j in "${different_bucket_name[@]}"
+    do
       
-#       bucket1="$j"
-#       bucket2="-stagingdev.gardenuity.com"
-#       bucket3="$bucket1$bucket2"
-#       echo $bucket3
-#       #==delete bucket=====================
-#       #aws s3 rb s3://$bucket3 --force
-#     done
-# fi
+      bucket1="$j"
+      bucket2="-stagingdev.gardenuity.com"
+      bucket3="$bucket1$bucket2"
+      echo $bucket3
+      #==delete bucket=====================
+      #aws s3 rb s3://$bucket3 --force
+    done
+fi
