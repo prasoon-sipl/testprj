@@ -24,7 +24,7 @@ done
 
 for i in "${bucket_list[@]}"
 do
-   b=${i//-staging.gardenuity.com/}
+   b=${i//staging.gardenuity.com/}
    bucket_list1+=("$b")
 done
 
