@@ -1,15 +1,5 @@
 #!/bin/bash
 
-    if [ $CIRCLE_BRANCH = 'master' ]; 
-		then aws s3 sync /home/ubuntu/testprj s3://master.systematixinfotech.com --delete;
-	else
-	    aws s3 mb s3://$CIRCLE_BRANCH.systematixinfotech.com
-        aws s3 website s3://$CIRCLE_BRANCH.systematixinfotech.com/ --index-document index.html --error-document error.html
-        aws s3 sync /home/ubuntu/testprj s3://$CIRCLE_BRANCH.systematixinfotech.com --delete
-    fi
-
-
-
 function JSONizePolicy() {
 	echo '{"Version": "2012-10-17","Statement": [{"Action": ["s3:GetObject","s3:PutObject"],"Effect": "Allow","Resource": ["arn:aws:s3:::'"$1"'/*"]}]}'> policy.json
 }
