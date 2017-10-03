@@ -2,10 +2,7 @@
   
 
 function JSONizePolicy() {
-	echo '{"Version":"2012-10-17","Id":"'"$1"'","Statement":[{"Sid":"PublicReadForGetBucketObjects","Effect":"Allow","Principal":"*","Action":["s3:GetObject","s3:PutObject"],"Resource":"arn:aws:s3:::'"$1"'/*"}]}'
-	#echo $1
-	#echo '{"Version": "2012-10-17","Statement": [{"Action": ["s3:GetObject","s3:PutObject"],"Effect": "Allow","Resource": ["arn:aws:s3:::'"$s3bucketname"'/*"]}]}'> policy.json
-	echo '{"Version":"2012-10-17","Id":"'"$1"'","Statement":[{"Sid":"PublicReadForGetBucketObjects","Effect":"Allow","Principal":"*","Action":["s3:GetObject","s3:PutObject"],"Resource":"arn:aws:s3:::'"$1"'/*"}]}' > policy.json
+	echo '{"Version":"2012-10-17","Id":"'"$1"'","Statement":[{"Sid":"PublicReadWriteForBucketObjects","Effect":"Allow","Principal":"*","Action":["s3:GetObject","s3:PutObject"],"Resource":"arn:aws:s3:::'"$1"'/*"}]}' > policy.json
 }
 
 if [ $CIRCLE_BRANCH = 'master' ]; 
