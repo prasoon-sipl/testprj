@@ -18,10 +18,9 @@ if [ $CIRCLE_BRANCH = 'master' ];
 
 	    aws s3api put-bucket-policy --bucket $CIRCLE_BRANCH.systematixinfotech.com --policy file://policy.json 2>&1
         
-        aws s3 website $CIRCLE_BRANCH.systematixinfotech.com --index-document index.html --error-document error.html
+       # aws s3 website s3://$CIRCLE_BRANCH.systematixinfotech.com/ --index-document index.html --error-document error.html
+       aws s3 website $CIRCLE_BRANCH.systematixinfotech.com --index-document index.html
        
-        #aws s3api put-bucket-website --bucket my-bucket --index-document file://index.html
-
         aws s3 sync /home/ubuntu/testprj s3://$CIRCLE_BRANCH.systematixinfotech.com --delete
 fi
 
