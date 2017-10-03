@@ -6,7 +6,7 @@ function JSONizePolicy() {
 }
 
 if [ $CIRCLE_BRANCH = 'master' ]; 
-		then aws s3 sync D:/circle_ci/testprj s3://master.systematixinfotech.com --delete;
+		then aws s3 sync /circle_ci/testprj s3://master.systematixinfotech.com --delete;
 	         
 	else
    
@@ -17,7 +17,7 @@ if [ $CIRCLE_BRANCH = 'master' ];
 
 	    aws s3api put-bucket-policy --bucket $CIRCLE_BRANCH.systematixinfotech.com --policy file://policy.json 2>&1
         aws s3 website s3://$CIRCLE_BRANCH.systematixinfotech.com/ --index-document index.html --error-document error.html
-        aws s3 sync D:/circle_ci/testprj s3://$CIRCLE_BRANCH.systematixinfotech.com --delete
+        aws s3 sync /circle_ci/testprj s3://$CIRCLE_BRANCH.systematixinfotech.com --delete
 fi
 
    
