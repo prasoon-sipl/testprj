@@ -70,8 +70,8 @@ else
         aws s3 rb s3://$bucket3 --force
         
         echo "bucket found and deleted."
-      #else
-        #echo "not found"
+      else
+        echo "not found"
       fi
 
     done
