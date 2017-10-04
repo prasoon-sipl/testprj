@@ -17,16 +17,23 @@ s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[]
 
 for bucket in $(echo "$s3_bucket_list")
 do
-  search_string="\-stagingdev.gardenuity.com"  
+  search_string="\.systematixinfotech.com"  
   match=$(echo "$bucket" | grep -o $search_string) 
   [[ ! -z $match ]] && bucket_list+=("$bucket")
 done
 
+
+echo "Bucket list with domain name"
+echo ${bucket_list[@]}
+
 for i in "${bucket_list[@]}"
 do
-   b=${i//-stagingdev.gardenuity.com/}
+   b=${i//.systematixinfotech.com/}
    bucket_list1+=("$b")
 done
+
+echo "Bucket list without domain name"
+echo ${bucket_list1[@]}
 
 #==============================
 #  Fetch Branch list from git #
@@ -36,6 +43,9 @@ for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `
 do 
     branch_list+=("$remote") 
 done
+
+echo "Remote branch list"
+echo ${branch_list[@]}
 
 #=========================================
 #  Get bucket name for non exists branch  #
@@ -48,8 +58,8 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # Delete unmatched bucket by name    #
 # if bucket list is not empty .       # 
 #=====================================
-#echo ${bucket_list1[@]}
-#echo ${branch_list[@]}
+
+echo "Unmatched bucket list"
 echo ${different_bucket_name[@]}
 
 if [ ${#bucket_list1[@]} -eq 0 ]; then
@@ -59,19 +69,18 @@ else
     do
       
       bucket1="$j"
-      bucket2="-stagingdev.gardenuity.com"
+      bucket2=".systematixinfotech.com"
       bucket3="$bucket1$bucket2"
       
       #echo $bucket3
       if aws s3api head-bucket --bucket "$bucket3" 2>/dev/null; then
         
-       
         #==delete bucket=====================
         aws s3 rb s3://$bucket3 --force
         
         echo "bucket found and deleted."
       else
-        echo "not found"
+        echo "bucket not found"
       fi
 
     done
