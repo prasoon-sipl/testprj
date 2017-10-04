@@ -12,8 +12,9 @@ deployment:
   staging:
     branch: /.*/
     commands:
-      - ./cleanup.sh
-      - ./deploy.sh      
+       -  git ls-remote --heads https://github.com/Gardenuity/gardenuity-theme.git
+      #- ./cleanup.sh
+      #- ./deploy.sh      
 notify:
   webhooks:
   #  - url: https://api.ghostinspector.com/v1/suites/58da99c5f32adc6f11f92a8d/execute/?apiKey=64d53c8942699775b99dbc4676c5f78b2af46f98
