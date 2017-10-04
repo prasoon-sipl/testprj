@@ -12,7 +12,10 @@ deployment:
   staging:
     branch: /.*/
     commands:
-       -  git ls-remote --heads https://github.com/Gardenuity/gardenuity-theme.git
+       -  for remote in `git branch -r |grep -v HEAD | sed 's/\*//g'| sed "s/origin\///" `; 
+          do 
+            echo "$remote"
+          done
       #- ./cleanup.sh
       #- ./deploy.sh      
 notify:
