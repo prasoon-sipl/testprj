@@ -49,7 +49,7 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # if bucket list is not empty .       # 
 #=====================================
 
-#echo ${different_bucket_name[@]}
+echo ${different_bucket_name[@]}
 
 if [ ${#bucket_list1[@]} -eq 0 ]; then
     echo "No buckets for deletion."
