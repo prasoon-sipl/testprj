@@ -49,7 +49,7 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # if bucket list is not empty .       # 
 #=====================================
 
-echo ${different_bucket_name[@]}
+#echo ${different_bucket_name[@]}
 
 if [ ${#bucket_list1[@]} -eq 0 ]; then
     echo "No buckets for deletion."
@@ -63,10 +63,10 @@ else
       
 
       if aws s3api head-bucket --bucket "$bucket3" 2>/dev/null; then
-        echo $bucket3
-        echo "found"
+        #echo $bucket3
+        #echo "found"
         #==delete bucket=====================
-        #aws s3 rb s3://$bucket3 --force
+        aws s3 rb s3://$bucket3 --force
       else
         echo "not found"
       fi
