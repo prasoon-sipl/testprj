@@ -63,8 +63,8 @@ else
       
 
       if aws s3api head-bucket --bucket "$bucket3" 2>/dev/null; then
-        #echo $bucket3
-        #echo "found"
+        echo $bucket3
+        echo "found"
         #==delete bucket=====================
         aws s3 rb s3://$bucket3 --force
       else
