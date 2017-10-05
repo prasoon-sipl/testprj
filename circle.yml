@@ -3,7 +3,7 @@
 #    - curl -s https://raw.githubusercontent.com/Shopify/themekit/master/scripts/install | sudo python
 dependencies:
   override:
-    - sudo pip install awscli
+    #- sudo pip install awscli
 
 test:
   override:
