@@ -6,19 +6,19 @@ function JSONizePolicy() {
 }
 
 if [ $CIRCLE_BRANCH = 'master' ]; 
-		then aws s3 sync /home/ubuntu/testprj s3://master.systematixinfotech.com --delete;
+		then aws s3 sync /home/ubuntu/testprj s3://master-stagingdev.gardenuity.com --delete;
 	        
 	else
 	    
-	    aws s3 mb s3://$CIRCLE_BRANCH.systematixinfotech.com
+	    aws s3 mb s3://$CIRCLE_BRANCH-stagingdev.gardenuity.com
 	    # Set bucket policy
-	    JSONizePolicy $CIRCLE_BRANCH.systematixinfotech.com
+	    JSONizePolicy $CIRCLE_BRANCH-stagingdev.gardenuity.com
 
-	    aws s3api put-bucket-policy --bucket $CIRCLE_BRANCH.systematixinfotech.com --policy file://policy.json 2>&1
+	    aws s3api put-bucket-policy --bucket $CIRCLE_BRANCH-stagingdev.gardenuity.com --policy file://policy.json 2>&1
        
-        aws s3 website s3://$CIRCLE_BRANCH.systematixinfotech.com/ --index-document index.html --error-document error.html
+        aws s3 website s3://$CIRCLE_BRANCH-stagingdev.gardenuity.com/ --index-document index.html --error-document error.html
        
-        aws s3 sync /home/ubuntu/testprj s3://$CIRCLE_BRANCH.systematixinfotech.com --delete
+        aws s3 sync /home/ubuntu/testprj s3://$CIRCLE_BRANCH-stagingdev.gardenuity.com --delete
 fi
 
 
@@ -35,10 +35,10 @@ fi
 # 	         #aws s3api put-bucket-policy --bucket gardenuity.com --policy file://policy.json 2>&1
 # 	else
 	    
-# 	    aws s3 mb s3://$CIRCLE_BRANCH-staging.gardenuity.com
+# 	    aws s3 mb s3://$CIRCLE_BRANCH-stagingdev.gardenuity.com
 # 	    # Set bucket policy
-# 	    JSONizePolicy $CIRCLE_BRANCH-staging.gardenuity.com
-# 	    aws s3api put-bucket-policy --bucket $CIRCLE_BRANCH-staging.gardenuity.com --policy file://policy.json 2>&1
-#         aws s3 website s3://$CIRCLE_BRANCH-staging.gardenuity.com/ --index-document index.html --error-document error.html
-#         aws s3 sync _site/ s3://$CIRCLE_BRANCH-staging.gardenuity.com --delete
+# 	    JSONizePolicy $CIRCLE_BRANCH-stagingdev.gardenuity.com
+# 	    aws s3api put-bucket-policy --bucket $CIRCLE_BRANCH-stagingdev.gardenuity.com --policy file://policy.json 2>&1
+#         aws s3 website s3://$CIRCLE_BRANCH-stagingdev.gardenuity.com/ --index-document index.html --error-document error.html
+#         aws s3 sync _site/ s3://$CIRCLE_BRANCH-stagingdev.gardenuity.com --delete
 # fi
