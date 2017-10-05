@@ -15,13 +15,6 @@ git remote prune origin
 #==============================
 s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[][]//g' -e 's/"//g' -e 's/,//g' -e '/^$/d' -e 's/^[ \t]*//;s/[ \t]*$//')
 
-# for bucket in $(echo "$s3_bucket_list")
-# do
-#   search_string="\-stagingdev.gardenuity.com"  
-#   match=$(echo "$bucket" | grep -o $search_string) 
-#   [[ ! -z $match ]] && bucket_list+=("$bucket")
-# done
-
 for bucket in $(echo "$s3_bucket_list")
 do
   if [[ $bucket == *"-stagingdev.gardenuity.com"* ]]; then
@@ -29,7 +22,7 @@ do
   fi
 done
 
-echo "Bucket list with domain name.."
+echo "Bucket list with domain name"
 echo ${bucket_list[@]}
 
 for i in "${bucket_list[@]}"
@@ -38,7 +31,7 @@ do
    bucket_list1+=("$b")
 done
 
-echo "Bucket list without domain name.."
+echo "Bucket list without domain name"
 echo ${bucket_list1[@]}
 
 #==============================
