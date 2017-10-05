@@ -22,7 +22,7 @@ do
   fi
 done
 
-echo "Bucket list with domain name"
+echo "Bucket list with domain name."
 echo ${bucket_list[@]}
 
 for i in "${bucket_list[@]}"
@@ -31,7 +31,7 @@ do
    bucket_list1+=("$b")
 done
 
-echo "Bucket list without domain name"
+echo "Bucket list without domain name."
 echo ${bucket_list1[@]}
 
 #==============================
