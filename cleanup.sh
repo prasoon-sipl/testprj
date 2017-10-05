@@ -15,6 +15,9 @@ git remote prune origin
 #==============================
 s3_bucket_list=$(aws s3api list-buckets --query 'Buckets[*].Name' | sed -e 's/[][]//g' -e 's/"//g' -e 's/,//g' -e '/^$/d' -e 's/^[ \t]*//;s/[ \t]*$//')
 
+echo "s3 Bucket list"
+echo ${s3_bucket_list[@]}
+
 for bucket in $(echo "$s3_bucket_list")
 do
   if [[ $bucket == *"-stagingdev.gardenuity.com"* ]]; then
@@ -22,8 +25,8 @@ do
   fi
 done
 
-echo "Bucket list with domain name."
-echo ${bucket_list[@]}
+#echo "Bucket list with domain name."
+#echo ${bucket_list[@]}
 
 for i in "${bucket_list[@]}"
 do
@@ -31,8 +34,8 @@ do
    bucket_list1+=("$b")
 done
 
-echo "Bucket list without domain name."
-echo ${bucket_list1[@]}
+#echo "Bucket list without domain name."
+#echo ${bucket_list1[@]}
 
 #==============================
 #  Fetch Branch list from git #
@@ -43,8 +46,8 @@ do
     branch_list+=("$remote") 
 done
 
-echo "Remote branch list"
-echo ${branch_list[@]}
+#echo "Remote branch list"
+#echo ${branch_list[@]}
 
 #=========================================
 #  Get bucket name for non exists branch  #
@@ -58,8 +61,8 @@ different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' 
 # if bucket list is not empty .       # 
 #=====================================
 
-echo "Unmatched values"
-echo ${different_bucket_name[@]}
+#echo "Unmatched values"
+#echo ${different_bucket_name[@]}
 
 if [ ${#bucket_list1[@]} -eq 0 ]; then
     echo "No buckets for deletion."
@@ -75,7 +78,7 @@ else
       if aws s3api head-bucket --bucket "$bucket3" 2>/dev/null; then
         
         #==delete bucket=====================
-        aws s3 rb s3://$bucket3 --force
+        #aws s3 rb s3://$bucket3 --force
         
         echo "bucket found and deleted."
       else
