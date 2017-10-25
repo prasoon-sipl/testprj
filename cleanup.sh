@@ -31,4 +31,5 @@ echo ${branch_list[@]}
 exit
 different_bucket_name=(`echo ${bucket_list1[@]} ${branch_list[@]} | tr ' ' '\n' | sort | uniq -u `)
 echo ${different_bucket_name[@]} 
+new line
 exit
